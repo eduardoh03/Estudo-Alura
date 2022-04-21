@@ -23,7 +23,15 @@ public class SwaggerConfigurations {
                 .paths(PathSelectors.ant("/**"))
                 .build()
                 .ignoredParameterTypes(Usuario.class)
-                ;
+                .globalOperationParameters(
+                        Arrays.asList(
+                                new ParameterBuilder()
+                                        .name("Authorization")
+                                        .description("Header para Token JWT")
+                                        .modelRef(new ModelRef("string"))
+                                        .parameterType("header")
+                                        .required(false)
+                                        .build()));
     }
 
 }
